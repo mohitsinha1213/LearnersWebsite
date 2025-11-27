@@ -1,0 +1,177 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 5%;
+    background-color: var(--white);
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    flex: 1;
+    max-width: 50%;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #e6f2ff;
+    color: var(--primary-blue);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--primary-blue);
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 90%;
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.statIcon {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.greenDot {
+    background-color: var(--secondary-green);
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.primaryBtn {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.primaryBtn:hover {
+    background-color: #0b5ed7;
+}
+
+.secondaryBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    background-color: var(--primary-blue);
+    /* Same as primary in design? Or maybe transparent with blue text? Design shows blue background for both but right one has play icon. Actually, looking closely at the image... */
+    /* "Admission Process" is solid blue. "Virtual Tour" is also solid blue. */
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.secondaryBtn:hover {
+    opacity: 0.9;
+}
+
+.imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.heroImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Background shapes */
+.bgShape {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.purpleShape {
+    width: 300px;
+    height: 300px;
+    background-color: #e0cffc;
+    top: -50px;
+    right: -50px;
+    opacity: 0.5;
+}
+
+.greenShape {
+    width: 200px;
+    height: 200px;
+    background-color: #d1e7dd;
+    bottom: 50px;
+    right: 100px;
+    opacity: 0.5;
+}
+
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .content {
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .imageContainer {
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}

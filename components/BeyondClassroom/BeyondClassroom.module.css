@@ -1,0 +1,234 @@
+.section {
+    padding: 4rem 5%;
+    background-color: var(--bg-light);
+}
+
+.header {
+    display: inline-block;
+    background-color: #2c7be5;
+    color: var(--white);
+    padding: 1rem 3rem;
+    border-radius: 20px 20px 20px 20px;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    grid-template-rows: 300px 300px;
+}
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.largeCard {
+    grid-row: span 1;
+}
+
+.wideCard {
+    grid-column: span 1;
+}
+
+.clubCard {
+    background-color: #2c7be5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    color: var(--white);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: var(--white);
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.clubContent {
+    z-index: 2;
+}
+
+.clubList {
+    margin-top: 1rem;
+}
+
+.clubItem {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.clubImageWrapper {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Specific grid layout based on design */
+/* Row 1: Grounds (Left), Library (Right) - Wait, design shows Grounds is large on left? 
+   Actually, looking at the image:
+   Row 1: World-Class Grounds (Left, maybe 50%), Library (Right, 50% but split?)
+   Actually, it looks like a masonry or complex grid.
+   Let's approximate:
+   Row 1: Grounds (Left half), Library (Right top half).
+   Row 2: Smart Classrooms (Left bottom?), Clubs (Right middle?), Stem Labs (Right bottom?).
+   
+   Let's look closer at "Beyond the classroom" section in the image.
+   It has 2 rows.
+   Row 1: 
+     - Left: "World-Class Grounds" (Image of kids playing).
+     - Right: "Library" (Image of shelves).
+   Row 2:
+     - Left: "Smart Classrooms" (Image of class).
+     - Middle: "Clubs and Societies" (Blue card with text and small image).
+     - Right: "Stem Labs" (Image of lab).
+   
+   Wait, the layout in the image is:
+   Top Row: "World-Class Grounds" (Left, Large), "Library" (Right, Wide).
+   Bottom Row: "Smart Classrooms" (Left), "Clubs and Societies" (Middle, Blue), "Stem Labs" (Right).
+   
+   Actually, "World-Class Grounds" seems to take full height of left column? No.
+   Let's assume a 3-column grid or 2-column.
+   
+   Let's try a CSS Grid with areas.
+*/
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 250px 250px;
+    gap: 1.5rem;
+}
+
+.grounds {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    /* Full height left? Or just top left? */
+    /* Image shows Grounds is on the left, maybe taking 1/3 width and full height? 
+     Or maybe top left. 
+     Let's look at the text "World-Class Grounds". It's at the bottom of the card.
+     The card is tall.
+  */
+}
+
+.library {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+}
+
+.smartClass {
+    grid-column: 1 / 2;
+    /* If grounds is not full height */
+    /* Let's assume:
+     Row 1: Grounds (1/3), Library (2/3)
+     Row 2: Smart Class (1/3), Clubs (1/3), Stem Labs (1/3)
+     
+     But Grounds looks taller in some designs. 
+     In the provided image:
+     "World-Class Grounds" is on the left.
+     "Library" is on the top right.
+     "Clubs" is below Library?
+     "Smart Classrooms" is below Grounds?
+     "Stem Labs" is below Clubs?
+     
+     Actually, looking at the image "Beyond the classroom":
+     Top Left: World-Class Grounds.
+     Top Right: Library.
+     Bottom Left: Smart Classrooms.
+     Bottom Middle: Clubs.
+     Bottom Right: Stem Labs.
+     
+     It looks like a 2x3 grid?
+     Row 1: Grounds (Left), Library (Right, spans 2 cols?)
+     Row 2: Smart Class, Clubs, Stem Labs.
+     
+     Let's try:
+     Grid columns: 1fr 1fr 1fr
+     Row 1: Grounds (1fr), Library (2fr)
+     Row 2: Smart Class (1fr), Clubs (1fr), Stem Labs (1fr)
+  */
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.grounds {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+/* Wait, if Grounds is 1/3 and Library is 2/3, that fills row 1.
+   Then Row 2 has 3 items.
+   This matches the visual weight.
+*/
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .library {
+        grid-column: 2 / 3;
+    }
+
+    .smartClass {
+        grid-column: 1 / 2;
+    }
+
+    .clubs {
+        grid-column: 2 / 3;
+    }
+
+    .stemLabs {
+        grid-column: 1 / 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grounds,
+    .library,
+    .smartClass,
+    .clubs,
+    .stemLabs {
+        grid-column: 1 / -1;
+    }
+}

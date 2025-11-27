@@ -1,0 +1,116 @@
+.section {
+    padding: 4rem 5%;
+    background-color: var(--white);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-dark);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.5rem;
+    color: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Background Gradients to simulate images since generation is rate limited */
+.krishnaBg {
+    background: linear-gradient(to bottom, rgba(13, 71, 161, 0.3), rgba(13, 71, 161, 0.9)), url('/images/classroom_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.kaveryBg {
+    background: linear-gradient(to bottom, rgba(25, 135, 84, 0.3), rgba(25, 135, 84, 0.9)), url('/images/classroom_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.kapilaBg {
+    background: linear-gradient(to bottom, rgba(111, 66, 193, 0.3), rgba(111, 66, 193, 0.9)), url('/images/classroom_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.kabiniBg {
+    background: linear-gradient(to bottom, rgba(160, 82, 45, 0.3), rgba(160, 82, 45, 0.9)), url('/images/classroom_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.iconWrapper {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.houseName {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.motto {
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    max-width: 90%;
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
