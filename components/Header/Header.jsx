@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <header className={styles.header}>
@@ -31,16 +33,19 @@ export default function Header() {
             </Link>
 
             <nav className={`${styles.nav} ${isOpen ? styles.open : ""}`}>
-                <Link href="#about" className={styles.navLink}>
+                <Link href="/#about" className={styles.navLink}>
                     About
                 </Link>
-                <Link href="#courses" className={styles.navLink}>
+                <Link
+                    href="/courses"
+                    className={`${styles.navLink} ${pathname === '/courses' ? styles.active : ''}`}
+                >
                     Courses
                 </Link>
-                <Link href="#facilities" className={styles.navLink}>
+                <Link href="/#facilities" className={styles.navLink}>
                     Facilities
                 </Link>
-                <Link href="#contact" className={styles.navLink}>
+                <Link href="/#contact" className={styles.navLink}>
                     Contact
                 </Link>
             </nav>

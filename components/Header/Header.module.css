@@ -29,9 +29,11 @@
     font-weight: 500;
     font-size: 0.9rem;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
-.navLink:hover {
+.navLink:hover,
+.navLink.active {
     color: var(--primary-blue);
 }
 
