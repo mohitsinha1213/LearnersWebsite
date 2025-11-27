@@ -1,60 +1,63 @@
-import Image from "next/image";
+import Link from "next/link";
 import styles from "./AcademicStreams.module.css";
 
 const streams = [
     {
-        title: "Primary",
-        subtitle: "Classes I to V",
-        icon: "📘", // Placeholder
-        colorClass: styles.blueIcon,
-    },
-    {
         title: "Pre-Primary",
         subtitle: "Nursery to UKG",
-        icon: "⭐", // Placeholder
+        description: "Play-based learning.",
+        icon: "⭐",
         colorClass: styles.orangeIcon,
     },
     {
-        title: "Middle",
-        subtitle: "Classes VI to VIII",
-        icon: "👥", // Placeholder
+        title: "Primary",
+        subtitle: "Classes 1–5",
+        description: "Strong academic foundation.",
+        icon: "📘",
+        colorClass: styles.blueIcon,
+    },
+    {
+        title: "Middle School",
+        subtitle: "Classes 6–8",
+        description: "Concept clarity & skills.",
+        icon: "👥",
         colorClass: styles.greenIcon,
     },
     {
-        title: "High",
-        subtitle: "Classes IX to XII",
-        icon: "🎓", // Placeholder
+        title: "High School",
+        subtitle: "Classes 9–12",
+        description: "Board exam preparation.",
+        icon: "🎓",
         colorClass: styles.purpleIcon,
     },
 ];
 
 export default function AcademicStreams() {
     return (
-        <section className={styles.section}>
-            <Image
-                src="/images/classroom_bg.png"
-                alt="Classroom Background"
-                fill
-                className={styles.bgImage}
-            />
-            <div className={styles.overlay}></div>
-
+        <section id="courses-section" className={styles.section}>
             <div className={styles.header}>
                 <h2 className={styles.title}>Academic Streams</h2>
+                <p className={styles.subtitle}>Nurturing every child from early learning to high school.</p>
             </div>
 
-            <div className={styles.cardsContainer}>
+            <div className={styles.gridContainer}>
                 {streams.map((stream, index) => (
                     <div key={index} className={styles.card}>
                         <div className={`${styles.iconWrapper} ${stream.colorClass}`}>
                             {stream.icon}
                         </div>
-                        <div className={styles.cardContent}>
-                            <span className={styles.cardTitle}>{stream.title}</span>
-                            <span className={styles.cardSubtitle}>{stream.subtitle}</span>
-                        </div>
+                        <h3 className={styles.cardTitle}>{stream.title}</h3>
+                        <p className={styles.cardText}>
+                            <strong>{stream.subtitle}</strong> · {stream.description}
+                        </p>
                     </div>
                 ))}
+            </div>
+
+            <div className={styles.buttonContainer}>
+                <Link href="/courses" className={styles.exploreButton}>
+                    Explore Full Curriculum →
+                </Link>
             </div>
         </section>
     );
